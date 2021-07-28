@@ -4,11 +4,21 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.ibtikar.mvvm_starter_koin_coroutines.R
+import com.ibtikar.mvvm_starter_koin_coroutines.data.local.SharedPreferencesInterface
+import com.ibtikar.mvvm_starter_koin_coroutines.ui.onboarding.OnBoardingActivity
+import com.ibtikar.mvvm_starter_koin_coroutines.utils.getKoinInstance
+import com.ibtikar.mvvm_starter_koin_coroutines.utils.intents.openActivity
 
 class MainActivity : AppCompatActivity() {
+    val sharedPreferences by getKoinInstance<SharedPreferencesInterface>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        if (!sharedPreferences.introduction) {
+            openActivity(OnBoardingActivity::class.java, finish = true)
+        } else {
+            setContentView(R.layout.activity_main)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

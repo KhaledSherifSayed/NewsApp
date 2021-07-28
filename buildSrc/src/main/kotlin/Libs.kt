@@ -14,6 +14,9 @@ object Libs {
     // httpLogger
     const val logger : String = "com.github.ihsanbal:LoggingInterceptor:3.1.0"
 
+    //Country Code Picker
+    const val countryPicker : String = "com.hbb20:ccp:2.4.7"
+
     // rooms
     object rooms {
         const val rooms_runtime = "androidx.room:room-runtime:_"

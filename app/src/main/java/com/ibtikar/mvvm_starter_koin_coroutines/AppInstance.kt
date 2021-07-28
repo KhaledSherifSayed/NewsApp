@@ -34,12 +34,14 @@ class AppInstance : Application() {
             androidContext(this@AppInstance)
             modules(
                 listOf(
+                    generalModule,
                     repositoryModule,
                     viewModelModule,
                     contextProviderModule,
                     retrofitModule,
                     apiModule,
-                    DBModule
+                    DBModule,
+                    sharedPreferencesModule
                 )
             )
         }

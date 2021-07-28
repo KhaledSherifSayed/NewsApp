@@ -131,6 +131,7 @@ dependencies {
     implementation(AndroidX.room.migration)
     implementation(AndroidX.room.ktx)
     kapt(AndroidX.room.compiler)
+    implementation(Libs.countryPicker)
     // Testing
     implementation(AndroidX.test.core)
     implementation(AndroidX.test.coreKtx)
