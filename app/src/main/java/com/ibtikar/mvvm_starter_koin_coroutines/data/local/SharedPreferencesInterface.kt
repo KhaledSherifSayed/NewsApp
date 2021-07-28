@@ -12,6 +12,9 @@ interface SharedPreferencesInterface {
 
     var introduction: Boolean
 
+    var nightMode: Boolean
+
+
     fun clearData()
     fun getString(key: String): String?
     fun putString(key: String, value: String?)

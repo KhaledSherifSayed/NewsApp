@@ -12,15 +12,15 @@ import com.ibtikar.mvvm_starter_koin_coroutines.data.models.NewsModelResponse
 data class ArticleEntity constructor(
     @PrimaryKey(autoGenerate = true)
     val id: Int? = null,
-    val articleId: String,
-    val title: String,
+    val articleId: String?,
+    val title: String?,
     val author: String?,
-    val description: String,
-    val url: String,
-    val urlToImage: String,
+    val description: String?,
+    val url: String?,
+    val urlToImage: String?,
     val content: String?,
-    val publishedDate: String,
-    val source: String
+    val publishedDate: String?,
+    val source: String?
 )
 
 
@@ -33,5 +33,5 @@ fun NewsModelResponse.toFavoriteArticleEntity() = ArticleEntity(
     urlToImage = urlToImage,
     content = content,
     publishedDate = publishedDate,
-    source = source.name
+    source = source?.name
 )

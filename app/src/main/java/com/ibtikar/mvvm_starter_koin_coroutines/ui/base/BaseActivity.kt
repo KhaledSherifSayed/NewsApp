@@ -1,11 +1,14 @@
 package com.ibtikar.mvvm_starter_koin_coroutines.ui.base
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.lifecycleScope
+import com.ibtikar.mvvm_starter_koin_coroutines.utils.LocaleHelper
 import kotlinx.coroutines.flow.collect
 
 /**
@@ -74,4 +77,14 @@ abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel>(
         if (errorMessage.isNotEmpty())
             Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
     }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        LocaleHelper.setLocale(this)
+        super.onConfigurationChanged(newConfig)
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase!!))
+    }
+
 }

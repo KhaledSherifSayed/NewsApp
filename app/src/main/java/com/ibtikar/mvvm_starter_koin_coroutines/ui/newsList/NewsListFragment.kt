@@ -16,6 +16,7 @@ import com.ibtikar.mvvm_starter_koin_coroutines.databinding.NewsListFragmentBind
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.BaseFragmentWithBusiness
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.ViewState
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.*
+import com.ibtikar.mvvm_starter_koin_coroutines.utils.Constants.categories
 import kotlinx.android.synthetic.main.news_list_fragment.*
 import kotlinx.android.synthetic.main.toolbar_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -68,6 +69,11 @@ class NewsListFragment :
                 ?.navigate(NewsListFragmentDirections.actionHomeFragmentToFavoriteListFragment())
         }
 
+        settingsIV.setOnClickListener {
+            view?.findNavController()
+                ?.navigate(NewsListFragmentDirections.actionHomeFragmentToSettingsFragment())
+        }
+
         searchCategoriesFavList.addAll(sharedPreferences.categoriesFav.split(","))
         initCategoriesChips()
     }
@@ -114,11 +120,13 @@ class NewsListFragment :
         // Create a Chip for each regionsList item.
         val chipGroup = searchCategoriesChips
         val inflator = LayoutInflater.from(chipGroup.context)
-        val categories = arrayListOf<String>(*resources.getStringArray(R.array.Categories))
-        val children = categories.map { categoryName ->
+        val children = categories.map { it ->
             val chip = inflator.inflate(R.layout.region, chipGroup, false) as Chip
-            chip.text = categoryName
-            chip.tag = categoryName.toLowerCase(Locale.ROOT)
+            if(sharedPreferences.language == LanguageCodes.ARABIC)
+                chip.text = it.titleAR
+            else
+                chip.text = it.titleEN
+            chip.tag = it.titleEN.toLowerCase(Locale.ROOT)
             chip.isChecked = searchCategoriesFavList.contains(chip.tag)
             chip
         }
@@ -157,7 +165,7 @@ class NewsListFragment :
     private fun filter(text: String) {
         val filteredList: ArrayList<NewsModelResponse> = ArrayList()
         for (item in newsList) {
-            if (item.title.toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))) {
+            if (item.title?.toLowerCase(Locale.ROOT)?.contains(text.toLowerCase(Locale.ROOT)) == true) {
                 filteredList.add(item)
             }
         }

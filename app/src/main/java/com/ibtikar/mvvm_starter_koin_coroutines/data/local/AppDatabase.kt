@@ -24,7 +24,7 @@ interface FavoriteArticlesDao {
     suspend fun deleteById(id: String) :  Int
 }
 
-@Database(entities = [ArticleEntity::class], version = 1, exportSchema = false)
+@Database(entities = [ArticleEntity::class], version = 2, exportSchema = false)
 abstract class FavoriteArticlesDatabase : RoomDatabase() {
     abstract val favoriteArticlesDao: FavoriteArticlesDao
 

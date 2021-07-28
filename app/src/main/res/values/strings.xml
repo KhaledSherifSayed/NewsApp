@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">News App</string>
-    <string name="sharedPrefrence_name">newsAPPPreferencesName</string>
-
+    <string name="sharedPrefrence_name" translatable="false">newsAPPPreferencesName</string>
     <string name="error_no_internet_connection">Sorry, there is no internet connection</string>
     <string name="error_time_out_connection">Sorry, you must try again </string>
     <string name="error_unexpected"> Unexpected Error </string>
@@ -16,13 +15,22 @@
     <string name="science">Science</string>
     <string name="sports">Sports</string>
     <string name="technology">Technology</string>
-    <string name="select_country">Select Your Favorite Country To Follow</string>
-    <string name="select_cateogry">Select Your Favorite Categories To Follow</string>
+    <string name="select_country">Select your Favorite Country To Follow</string>
+    <string name="select_cateogry">Select your Favorite Categories To Follow</string>
+    <string name="change_country">you can change your Favorite Country </string>
+    <string name="change_cateogry">you can change your Favorite Categories </string>
     <string name="search">search</string>
     <string name="search_check_msg">you should search at least in one category</string>
     <string name="favorite_check_msg">Article added before</string>
     <string name="favorite_success_msg">Article Added Successfully to your favorite</string>
     <string name="favorite_list">Favorite List</string>
-
-
+    <string name="settings">Settings</string>
+    <string name="article_deleted_msg">Article is deleted from Favorite</string>
+    <!--LANGUAGE SELECTION DIALOG-->
+    <string name="changeLanguage">Change Language(العَرَبِيَّة)</string>
+    <string name="label_english">English</string>
+    <string name="label_arabic">Arabic (العَرَبِيَّة)</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="three_cats_check">three favorite categories as minimum</string>
+    <string name="nigh_mode">Night Mode</string>
 </resources>

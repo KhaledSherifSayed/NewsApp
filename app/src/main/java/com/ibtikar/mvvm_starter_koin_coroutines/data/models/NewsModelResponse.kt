@@ -12,24 +12,29 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class NewsModelResponse(
     val author: String?,
-    val source: Source,
-    val title: String,
-    val description: String,
-    val url: String,
-    val urlToImage: String,
+    val source: Source?,
+    val title: String?,
+    val description: String?,
+    val url: String?,
+    val urlToImage: String?,
     val content: String?,
     @SerializedName("publishedAt")
-    val publishedDate: String,
+    val publishedDate: String?,
 ) : Parcelable
 
 
 @Parcelize
 data class Source(
     val id: String?,
-    val name: String
+    val name: String?
 ) : Parcelable
 
-
+@Parcelize
+data class CategoryModel(
+    val id: Int?,
+    val titleEN: String,
+    val titleAR:String
+) : Parcelable
 
 fun ArticleEntity.toArticleViewResponse() = NewsModelResponse(
     title = title,

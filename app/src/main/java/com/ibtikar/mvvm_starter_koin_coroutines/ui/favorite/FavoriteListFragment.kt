@@ -3,14 +3,15 @@ package com.ibtikar.mvvm_starter_koin_coroutines.ui.favorite
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.annotation.Nullable
 import androidx.navigation.findNavController
 import com.ibtikar.mvvm_starter_koin_coroutines.R
-import com.ibtikar.mvvm_starter_koin_coroutines.data.local.toFavoriteArticleEntity
 import com.ibtikar.mvvm_starter_koin_coroutines.databinding.FavoriteListFragmentBinding
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.BaseFragmentWithBusiness
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.ViewState
-import com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList.ArticlesAdapter
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList.NewsItemClick
 import kotlinx.android.synthetic.main.favorite_list_fragment.*
 import kotlinx.android.synthetic.main.toolbar_favorite.view.*
@@ -26,6 +27,17 @@ class FavoriteListFragment :
 
     private var articlesAdapter: FavoriteArticlesAdapter? = null
     override val viewModel: FavoriteNewsViewModel by viewModel()
+
+    override fun onCreate(@Nullable savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    }
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            back()
+        }
+    }
 
     override fun setup() {
         setupAdapter()
@@ -51,7 +63,7 @@ class FavoriteListFragment :
             is FavoriteNewsViewState.onDeletingFavoriteResponse -> {
                 Toast.makeText(
                     context,
-                    "Article is deleted from Favorite",
+                    getString(R.string.article_deleted_msg),
                     Toast.LENGTH_SHORT
                 ).show()
             }
