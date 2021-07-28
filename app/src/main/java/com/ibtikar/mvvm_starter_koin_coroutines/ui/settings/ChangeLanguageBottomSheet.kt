@@ -3,10 +3,7 @@ package com.ibtikar.mvvm_starter_koin_coroutines.ui.settings
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.FragmentManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ibtikar.mvvm_starter_koin_coroutines.R
@@ -34,33 +31,13 @@ class ChangeLanguageBottomSheet : BottomSheetDialogFragment() {
         return BottomSheetDialog(requireContext(), theme)
     }
 
-
-    private val mBottomSheetBehaviorCallback = object : BottomSheetBehavior.BottomSheetCallback() {
-        override fun onStateChanged(bottomSheet: View, newState: Int) {
-            if (newState == BottomSheetBehavior.STATE_HIDDEN) {
-                dismiss()
-            }
-        }
-
-        override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-    }
-
     override fun setupDialog(dialog: Dialog, style: Int) {
         //Get the content View
         val chooseLanguageBinding = ChooseLanguageBottomDialogBinding.inflate(
             LayoutInflater.from(requireContext()), null, false
         )
         dialog.setContentView(chooseLanguageBinding.root)
-        //Set the coordinator layout behavior
-        val params = (chooseLanguageBinding.root.parent as View).layoutParams as
-                CoordinatorLayout.LayoutParams
-        val behavior = params.behavior
 
-        //Set callback
-        if (behavior != null && behavior is BottomSheetBehavior<*>) {
-            behavior.setBottomSheetCallback(mBottomSheetBehaviorCallback)
-            behavior.state = BottomSheetBehavior.PEEK_HEIGHT_AUTO
-        }
         if (sharedPreferences.language == LanguageCodes.ARABIC) {
             chooseLanguageBinding.textViewArabic.setTextColor(resources.getColor(R.color.colorPrimary))
         } else {

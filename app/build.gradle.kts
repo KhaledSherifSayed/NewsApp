@@ -31,7 +31,7 @@ android {
 
     defaultConfig {
         applicationId = "com.ibtikar.mvvm_starter_koin_coroutines"
-        minSdkVersion(26)
+        minSdkVersion(27)
         targetSdkVersion(30)
         versionCode = 1
         versionName = "1.0.0"
