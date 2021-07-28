@@ -33,7 +33,7 @@ class NewsViewModel(
                     allResults.addAll(it.articles!!)
                 }
             }
-
+            allResults.sortByDescending{it.publishedDate}
             setState(NewsViewState.onNewsResponse(allResults))
         }
     }
