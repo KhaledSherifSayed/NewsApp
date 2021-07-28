@@ -7,6 +7,7 @@
     <string name="changeLanguage">تغيير اللغة (En)</string>
     <string name="error_no_internet_connection">عذرا ، لا يوجد اتصال بالإنترنت</string>
     <string name="error_time_out_connection">آسف ، يجب أن تحاول مرة أخرى</string>
+    <string name="error_unexpected">خطأ غير متوقع</string>
     <string name="next">التالي</string>
     <string name="select_country">حدد الدولة المفضلة لديك لمتابعة</string>
     <string name="select_category">حدد الفئات المفضلة لديك لمتابعة</string>
