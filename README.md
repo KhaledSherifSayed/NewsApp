@@ -8,7 +8,7 @@
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 ![Github Followers](https://img.shields.io/github/followers/KhaledSherifSayed?label=Follow&style=social)
 ![GitHub forks](https://img.shields.io/github/forks/KhaledSherifSayed/NewsApp?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/KhaledSherifSayed//NewsApp?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/KhaledSherifSayed/NewsApp?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/Meslmawy?label=Follow&style=social)
 
 
