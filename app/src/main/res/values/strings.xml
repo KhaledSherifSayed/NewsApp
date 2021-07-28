@@ -16,13 +16,17 @@
     <string name="science">Science</string>
     <string name="sports">Sports</string>
     <string name="technology">Technology</string>
-    <string name="select_country">Select Your Favorite Country To Follow</string>
-    <string name="select_cateogry">Select Your Favorite Categories To Follow</string>
+    <string name="select_country">Select your Favorite Country To Follow</string>
+    <string name="select_cateogry">Select your Favorite Categories To Follow</string>
+    <string name="change_country">you can change your Favorite Country </string>
+    <string name="change_cateogry">you can change your Favorite Categories </string>
+
     <string name="search">search</string>
     <string name="search_check_msg">you should search at least in one category</string>
     <string name="favorite_check_msg">Article added before</string>
     <string name="favorite_success_msg">Article Added Successfully to your favorite</string>
     <string name="favorite_list">Favorite List</string>
+    <string name="settings">Settings</string>
 
 
 </resources>

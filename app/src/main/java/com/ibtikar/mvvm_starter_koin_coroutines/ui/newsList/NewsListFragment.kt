@@ -68,6 +68,11 @@ class NewsListFragment :
                 ?.navigate(NewsListFragmentDirections.actionHomeFragmentToFavoriteListFragment())
         }
 
+        settingsIV.setOnClickListener {
+            view?.findNavController()
+                ?.navigate(NewsListFragmentDirections.actionHomeFragmentToSettingsFragment())
+        }
+
         searchCategoriesFavList.addAll(sharedPreferences.categoriesFav.split(","))
         initCategoriesChips()
     }
