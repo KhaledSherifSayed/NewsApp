@@ -13,8 +13,11 @@ import com.ibtikar.mvvm_starter_koin_coroutines.R
 import com.ibtikar.mvvm_starter_koin_coroutines.data.local.SharedPreferencesInterface
 import com.ibtikar.mvvm_starter_koin_coroutines.databinding.FavoriteListFragmentBinding
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.BaseFragment
+import com.ibtikar.mvvm_starter_koin_coroutines.utils.Constants
+import com.ibtikar.mvvm_starter_koin_coroutines.utils.LanguageCodes
+import com.ibtikar.mvvm_starter_koin_coroutines.utils.LocaleHelper
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.getKoinInstance
-import kotlinx.android.synthetic.main.activity_on_boarding.*
+import kotlinx.android.synthetic.main.news_list_fragment.*
 import kotlinx.android.synthetic.main.settings_fragment.*
 import kotlinx.android.synthetic.main.settings_fragment.ccp
 import kotlinx.android.synthetic.main.toolbar_settings.view.*
@@ -47,6 +50,15 @@ class SettingsFragment :
         super.onViewCreated(view, savedInstanceState)
         settings_toolbar.backImage.setOnClickListener { back() }
         ccp.setCountryForNameCode(sharedPreferences.countryFav)
+        changeLang.setOnClickListener {
+            ChangeLanguageBottomSheet.showDialog(parentFragmentManager) { chooseLanguage ->
+                if (chooseLanguage != sharedPreferences.language) {
+                    sharedPreferences.language = chooseLanguage
+                    LocaleHelper.setLocale(requireContext(), chooseLanguage)
+                    activity?.recreate()
+                }
+            }
+        }
         searchCategoriesFavList.clear()
         searchCategoriesFavList.addAll(sharedPreferences.categoriesFav.split(","))
         initCategoriesChips()
@@ -62,11 +74,13 @@ class SettingsFragment :
         // Create a Chip for each regionsList item.
         val chipGroup = settingscategoriesList
         val inflator = LayoutInflater.from(chipGroup.context)
-        val categories = arrayListOf<String>(*resources.getStringArray(R.array.Categories))
-        val children = categories.map { categoryName ->
+        val children = Constants.categories.map {
             val chip = inflator.inflate(R.layout.region, chipGroup, false) as Chip
-            chip.text = categoryName
-            chip.tag = categoryName.toLowerCase(Locale.ROOT)
+            if(sharedPreferences.language == LanguageCodes.ARABIC)
+                chip.text = it.titleAR
+            else
+                chip.text = it.titleEN
+            chip.tag = it.titleEN.toLowerCase(Locale.ROOT)
             chip.isChecked = searchCategoriesFavList.contains(chip.tag)
             chip
         }
@@ -82,7 +96,7 @@ class SettingsFragment :
                         chip.isChecked = true
                         Toast.makeText(
                             context,
-                            "three favorite categories as minimum",
+                            getString(R.string.three_cats_check),
                             Toast.LENGTH_LONG
                         ).show()
                     }

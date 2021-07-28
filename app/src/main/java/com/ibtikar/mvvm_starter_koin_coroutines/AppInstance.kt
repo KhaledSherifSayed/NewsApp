@@ -1,8 +1,12 @@
 package com.ibtikar.mvvm_starter_koin_coroutines
 
 import android.app.Application
+import android.content.Context
+import android.content.res.Configuration
 import android.util.Log
+import androidx.annotation.CallSuper
 import com.ibtikar.mvvm_starter_koin_coroutines.di.*
+import com.ibtikar.mvvm_starter_koin_coroutines.utils.LocaleHelper
 import com.ihsanbal.logging.LoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -45,6 +49,16 @@ class AppInstance : Application() {
                 )
             )
         }
+    }
 
+    @CallSuper
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(LocaleHelper.setLocale(newBase!!))
+    }
+
+    @CallSuper
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        LocaleHelper.setLocale(this)
     }
 }

@@ -9,6 +9,7 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.supervisorScope
 
 /**
  * Created by Meslmawy on 6/10/2021
@@ -21,21 +22,24 @@ class NewsViewModel(
     BaseViewModel(contextProviders) {
 
     fun getMostSharedArticles(country: String, cats: List<String>) {
-        var allResults: ArrayList<NewsModelResponse> = ArrayList()
-        var tasks: ArrayList<Deferred<Flow<AllNewsResponse>>> = ArrayList()
+        val allResults: ArrayList<NewsModelResponse> = ArrayList()
+        val tasks: ArrayList<Deferred<Flow<AllNewsResponse>>> = ArrayList()
 
         launchBlock(showLoading = true) {
-            for (category in cats) {
-                tasks.add(async { newsRepository.getArticleList(country, category) })
-            }
+            supervisorScope {
 
-            (cats.indices).forEach { i ->
-                tasks[i].await().collect {
-                    allResults.addAll(it.articles!!)
+                for (category in cats) {
+                    tasks.add(async { newsRepository.getArticleList(country, category) })
                 }
+
+                (cats.indices).forEach { i ->
+                    tasks[i].await().collect {
+                        allResults.addAll(it.articles!!)
+                    }
+                }
+                allResults.sortByDescending { it.publishedDate }
+                setState(NewsViewState.onNewsResponse(allResults))
             }
-            allResults.sortByDescending { it.publishedDate }
-            setState(NewsViewState.onNewsResponse(allResults))
         }
     }
 

@@ -9,11 +9,9 @@ import androidx.activity.OnBackPressedCallback
 import androidx.annotation.Nullable
 import androidx.navigation.findNavController
 import com.ibtikar.mvvm_starter_koin_coroutines.R
-import com.ibtikar.mvvm_starter_koin_coroutines.data.local.toFavoriteArticleEntity
 import com.ibtikar.mvvm_starter_koin_coroutines.databinding.FavoriteListFragmentBinding
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.BaseFragmentWithBusiness
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.ViewState
-import com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList.ArticlesAdapter
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList.NewsItemClick
 import kotlinx.android.synthetic.main.favorite_list_fragment.*
 import kotlinx.android.synthetic.main.toolbar_favorite.view.*
@@ -65,7 +63,7 @@ class FavoriteListFragment :
             is FavoriteNewsViewState.onDeletingFavoriteResponse -> {
                 Toast.makeText(
                     context,
-                    "Article is deleted from Favorite",
+                    getString(R.string.article_deleted_msg),
                     Toast.LENGTH_SHORT
                 ).show()
             }
