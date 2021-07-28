@@ -1,7 +1,7 @@
 package com.ibtikar.mvvm_starter_koin_coroutines.di
 
 import android.content.Context
-import com.ibtikar.mvvm_starter_koin_coroutines.data.local.ArticlesDatabase
+import com.ibtikar.mvvm_starter_koin_coroutines.data.local.FavoriteArticlesDatabase
 import org.koin.dsl.module
 
 /**
@@ -10,8 +10,8 @@ import org.koin.dsl.module
 
 val DBModule = module {
 
-    fun provideAppLocalDatabase(context: Context): ArticlesDatabase {
-        return ArticlesDatabase.getAppDataBase(context)
+    fun provideAppLocalDatabase(context: Context): FavoriteArticlesDatabase {
+        return FavoriteArticlesDatabase.getAppDataBase(context)
     }
 
     // Room Database

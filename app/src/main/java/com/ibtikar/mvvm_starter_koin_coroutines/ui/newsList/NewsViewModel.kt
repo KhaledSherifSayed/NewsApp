@@ -1,5 +1,6 @@
 package com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList
 
+import com.ibtikar.mvvm_starter_koin_coroutines.data.local.ArticleEntity
 import com.ibtikar.mvvm_starter_koin_coroutines.data.models.AllNewsResponse
 import com.ibtikar.mvvm_starter_koin_coroutines.data.models.NewsModelResponse
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.BaseViewModel
@@ -33,8 +34,21 @@ class NewsViewModel(
                     allResults.addAll(it.articles!!)
                 }
             }
-            allResults.sortByDescending{it.publishedDate}
+            allResults.sortByDescending { it.publishedDate }
             setState(NewsViewState.onNewsResponse(allResults))
+        }
+    }
+
+    fun addArticleToFavorite(article: ArticleEntity) {
+        launchBlock(showLoading = true) {
+            newsRepository.checkItem(article).collect {
+                if (it)
+                    setState(NewsViewState.onAddingFavoriteResponse(false))
+                else
+                    newsRepository.addArticleToFavoriteList(article).collect {
+                        setState(NewsViewState.onAddingFavoriteResponse(true))
+                    }
+            }
         }
     }
 

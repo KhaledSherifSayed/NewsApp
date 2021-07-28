@@ -35,12 +35,12 @@ class AppInstance : Application() {
             modules(
                 listOf(
                     generalModule,
+                    DBModule,
                     repositoryModule,
                     viewModelModule,
                     contextProviderModule,
                     retrofitModule,
                     apiModule,
-                    DBModule,
                     sharedPreferencesModule
                 )
             )

@@ -9,6 +9,6 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
         single {
-            NewsRepository(get(),get())
+            NewsRepository(get(),get(),get())
         }
 }

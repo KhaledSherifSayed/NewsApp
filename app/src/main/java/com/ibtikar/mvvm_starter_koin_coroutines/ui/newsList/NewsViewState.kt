@@ -10,4 +10,5 @@ import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.ViewState
 
 sealed class NewsViewState : ViewState() {
     data class onNewsResponse(val data: List<NewsModelResponse>?) : Loaded<List<NewsModelResponse>?>(data)
+    data class onAddingFavoriteResponse(val data: Boolean?) : Loaded<Boolean?>(data)
 }

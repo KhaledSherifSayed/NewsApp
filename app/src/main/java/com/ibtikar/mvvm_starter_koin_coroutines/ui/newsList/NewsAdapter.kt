@@ -79,10 +79,12 @@ class ArticlesAdapter(val callback: NewsItemClick) : ListAdapter<NewsModelRespon
 /**
  * Click listener for Groups. By giving the block a name it helps a reader understand what it does.
  */
-class NewsItemClick(val block: (NewsModelResponse) -> Unit) {
+class NewsItemClick(val block: (NewsModelResponse,Int) -> Unit) {
     /**
      * Called when a video is clicked
      * @param video the video that was clicked
      */
-    fun onClick(item: NewsModelResponse) = block(item)
+    fun onClick(item: NewsModelResponse,version : Int) = block(item,version)
+    fun onFavoriteClick(item: NewsModelResponse,version: Int) = block(item,version)
+
 }
