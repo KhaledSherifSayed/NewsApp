@@ -4,4 +4,4 @@ plugins {
 }
 
 include(":app")
-rootProject.name = "NY_TIMES_POPULAR"
+rootProject.name = "newsApp"

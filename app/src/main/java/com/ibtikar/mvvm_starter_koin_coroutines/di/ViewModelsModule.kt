@@ -1,6 +1,7 @@
 package com.ibtikar.mvvm_starter_koin_coroutines.di
 
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.articlesList.ArticlesViewModel
+import com.ibtikar.mvvm_starter_koin_coroutines.ui.onboarding.OnBoardingViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -13,4 +14,7 @@ val viewModelModule = module {
         ArticlesViewModel(get(), get())
     }
 
+    viewModel {
+        OnBoardingViewModel(get())
+    }
 }

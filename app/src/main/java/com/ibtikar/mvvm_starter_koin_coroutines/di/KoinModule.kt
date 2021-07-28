@@ -6,7 +6,11 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.ibtikar.mvvm_starter_koin_coroutines.BuildConfig
+import com.ibtikar.mvvm_starter_koin_coroutines.data.local.SharedPreferencesInterface
+import com.ibtikar.mvvm_starter_koin_coroutines.data.local.SharedPreferencesUtils
 import com.ibtikar.mvvm_starter_koin_coroutines.data.network.ApiService
+import com.ibtikar.mvvm_starter_koin_coroutines.data.network.interceptor.TokenInterceptor
+import com.ibtikar.mvvm_starter_koin_coroutines.di.KoinNames.TOKEN_INTERCEPTORS
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.ResourcesHandler
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.coroutines.ContextProviders
 import com.ihsanbal.logging.LoggingInterceptor
@@ -18,13 +22,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import com.ihsanbal.logging.Level
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.qualifier.named
 
 /**
  * Created by Meslmawy on 6/10/2021
  */
 
+object KoinNames {
+    const val TOKEN_INTERCEPTORS = "TOKEN_INTERCEPTORS"
+
+}
 val generalModule = module {
     single { ResourcesHandler(get()) }
+    single(named(TOKEN_INTERCEPTORS)) { TokenInterceptor() }
 }
 
 val contextProviderModule = module {
@@ -66,10 +77,11 @@ val retrofitModule = module {
         return logging.log(Log.VERBOSE).build()
     }
 
-    fun provideHttpClient(loggingInterceptor: LoggingInterceptor): OkHttpClient {
+    fun provideHttpClient(loggingInterceptor: LoggingInterceptor,tokenInterceptor: TokenInterceptor): OkHttpClient {
 
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
+            .addInterceptor(tokenInterceptor)
             .connectTimeout(20, TimeUnit.SECONDS)
             .readTimeout(20, TimeUnit.SECONDS)
             .build()
@@ -87,6 +99,16 @@ val retrofitModule = module {
     single { provideGson() }
     single { provideDefaultLoggingInterceptor() }
     single { provideLoggingInterceptor() }
-    single { provideHttpClient(get()) }
+    single { provideHttpClient(get(),get(named(TOKEN_INTERCEPTORS))) }
     single { provideRetrofit(get(), get()) }
+}
+
+
+val sharedPreferencesModule = module {
+    single<SharedPreferencesInterface> {
+        SharedPreferencesUtils(
+            get(),
+            androidContext()
+        )
+    }
 }
