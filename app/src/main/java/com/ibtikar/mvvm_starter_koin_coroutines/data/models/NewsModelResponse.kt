@@ -3,7 +3,6 @@ package com.ibtikar.mvvm_starter_koin_coroutines.data.models
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
-import java.math.BigInteger
 
 /**
  * Created by Meslmawy on 6/10/2021
@@ -25,6 +24,6 @@ data class NewsModelResponse(
 
 @Parcelize
 data class Source(
-    val id: Int?,
+    val id: String?,
     val name: String
 ) : Parcelable

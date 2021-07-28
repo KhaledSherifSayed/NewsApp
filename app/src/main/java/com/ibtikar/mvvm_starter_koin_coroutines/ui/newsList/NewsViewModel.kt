@@ -1,8 +1,13 @@
 package com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList
 
+import com.ibtikar.mvvm_starter_koin_coroutines.data.local.ArticleEntity
+import com.ibtikar.mvvm_starter_koin_coroutines.data.models.AllNewsResponse
+import com.ibtikar.mvvm_starter_koin_coroutines.data.models.NewsModelResponse
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.BaseViewModel
-import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.ViewState
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.coroutines.ContextProviders
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 
 /**
@@ -15,13 +20,34 @@ class NewsViewModel(
 ) :
     BaseViewModel(contextProviders) {
 
-    fun getMostSharedArticles() {
+    fun getMostSharedArticles(country: String, cats: List<String>) {
+        var allResults: ArrayList<NewsModelResponse> = ArrayList()
+        var tasks: ArrayList<Deferred<Flow<AllNewsResponse>>> = ArrayList()
+
         launchBlock(showLoading = true) {
-            newsRepository.getArticleList().collect {
-                if (it.totalResults > 0)
-                    setState(NewsViewState.onNewsResponse(it.articles))
+            for (category in cats) {
+                tasks.add(async { newsRepository.getArticleList(country, category) })
+            }
+
+            (cats.indices).forEach { i ->
+                tasks[i].await().collect {
+                    allResults.addAll(it.articles!!)
+                }
+            }
+            allResults.sortByDescending { it.publishedDate }
+            setState(NewsViewState.onNewsResponse(allResults))
+        }
+    }
+
+    fun addArticleToFavorite(article: ArticleEntity) {
+        launchBlock(showLoading = true) {
+            newsRepository.checkItem(article).collect {
+                if (it)
+                    setState(NewsViewState.onAddingFavoriteResponse(false))
                 else
-                    setState(ViewState.Empty)
+                    newsRepository.addArticleToFavoriteList(article).collect {
+                        setState(NewsViewState.onAddingFavoriteResponse(true))
+                    }
             }
         }
     }

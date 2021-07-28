@@ -22,7 +22,7 @@
                 android:id="@+id/countryChooserHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Select Your Favorite Country To Follow"
+                android:text="@string/select_country"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,7 +36,7 @@
                 app:ccp_showFullName="true"
                 app:ccp_showNameCode="false"
                 app:ccp_showPhoneCode="false"
-                app:ccp_customMasterCountries="ae,ar,at,au,be,bg,br,ca,ch,cn,co,cu,cz,de,eg,fr,gb,gr,hk,hu,id,ie,il,in,it,jp,kr,lt,lv,ma,mx,my,ng,nl,no,nz,ph,pl,pt,ro,rs,ru,sa,se,sg,si,sk,th,tr,tw,ua,us,ve,za"
+                app:ccp_customMasterCountries="ae,ar,at,au,be,bg,br,ca,ch,cn,co,cu,cz,de,eg,fr,gb,gr,hk,hu,id,ie,in,it,jp,kr,lt,lv,ma,mx,my,ng,nl,no,nz,ph,pl,pt,ro,rs,ru,sa,se,sg,si,sk,th,tr,tw,ua,us,ve,za"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/countryChooserHeader" />
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:text="Select Your Favorite Categories To Follow"
+                android:text="@string/select_cateogry"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_50sdp"
                 android:elevation="10dp"
-                android:text="Next"
+                android:text="@string/next"
                 app:cornerRadius="8dp"
                 android:enabled="false"
                 app:layout_constraintStart_toStartOf="parent"

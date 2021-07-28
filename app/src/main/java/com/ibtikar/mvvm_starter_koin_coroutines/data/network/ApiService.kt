@@ -13,5 +13,8 @@ import retrofit2.http.Query
 interface ApiService {
     @UserAuthentication
     @GET(URL_GET_NEWS)
-    suspend fun getAllArticles(@Query(value = "country") period: String?="us"): AllNewsResponse
+    suspend fun getAllArticles(
+        @Query(value = "country") country: String,
+        @Query(value = "category") category: String?
+    ): AllNewsResponse
 }
