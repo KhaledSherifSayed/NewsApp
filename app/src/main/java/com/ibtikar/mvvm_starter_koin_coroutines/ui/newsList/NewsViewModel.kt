@@ -1,8 +1,12 @@
 package com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList
 
+import com.ibtikar.mvvm_starter_koin_coroutines.data.models.AllNewsResponse
+import com.ibtikar.mvvm_starter_koin_coroutines.data.models.NewsModelResponse
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.BaseViewModel
-import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.ViewState
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.coroutines.ContextProviders
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 
 /**
@@ -15,14 +19,22 @@ class NewsViewModel(
 ) :
     BaseViewModel(contextProviders) {
 
-    fun getMostSharedArticles() {
+    fun getMostSharedArticles(country: String, cats: List<String>) {
+        var allResults: ArrayList<NewsModelResponse> = ArrayList()
+        var tasks: ArrayList<Deferred<Flow<AllNewsResponse>>> = ArrayList()
+
         launchBlock(showLoading = true) {
-            newsRepository.getArticleList().collect {
-                if (it.totalResults > 0)
-                    setState(NewsViewState.onNewsResponse(it.articles))
-                else
-                    setState(ViewState.Empty)
+            for (category in cats) {
+                tasks.add(async { newsRepository.getArticleList(country, category) })
             }
+
+            (cats.indices).forEach { i ->
+                tasks[i].await().collect {
+                    allResults.addAll(it.articles!!)
+                }
+            }
+
+            setState(NewsViewState.onNewsResponse(allResults))
         }
     }
 

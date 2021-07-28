@@ -15,7 +15,7 @@ class NewsRepository(
     private val apiService: ApiService
 ) : BaseRepository(contextProviders) {
 
-    fun getArticleList() = networkHandler {
-        apiService.getAllArticles()
+    fun getArticleList(country : String,category: String) = networkHandler {
+        apiService.getAllArticles(country,category)
     }
 }

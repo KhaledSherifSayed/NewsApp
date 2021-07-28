@@ -25,7 +25,7 @@ class OnBoardingActivity :
         initCategoriesChips()
         nextButton.setOnClickListener{
             sharedPreferences.categoriesFav = categoriesFavList.joinToString(separator = ",")
-            sharedPreferences.countryFav = ccp.selectedCountryCode
+            sharedPreferences.countryFav = ccp.selectedCountryNameCode
             sharedPreferences.introduction = true
             openActivity(MainActivity::class.java, finish = true)
         }

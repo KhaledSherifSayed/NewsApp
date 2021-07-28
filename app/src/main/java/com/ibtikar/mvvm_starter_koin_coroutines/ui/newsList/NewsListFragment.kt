@@ -2,9 +2,12 @@ package com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList
 
 
 import com.ibtikar.mvvm_starter_koin_coroutines.R
+import com.ibtikar.mvvm_starter_koin_coroutines.data.local.SharedPreferencesInterface
+import com.ibtikar.mvvm_starter_koin_coroutines.data.models.NewsModelResponse
 import com.ibtikar.mvvm_starter_koin_coroutines.databinding.NewsListFragmentBinding
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.BaseFragmentWithBusiness
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.ViewState
+import com.ibtikar.mvvm_starter_koin_coroutines.utils.getKoinInstance
 import kotlinx.android.synthetic.main.news_list_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -16,11 +19,16 @@ class NewsListFragment :
     BaseFragmentWithBusiness<NewsListFragmentBinding, NewsViewModel>(R.layout.news_list_fragment) {
 
     private var articlesAdapter: ArticlesAdapter? = null
+    val sharedPreferences by getKoinInstance<SharedPreferencesInterface>()
+
     override val viewModel: NewsViewModel by viewModel()
 
     override fun setup() {
         setupAdapter()
-        viewModel.getMostSharedArticles()
+        viewModel.getMostSharedArticles(
+            sharedPreferences.countryFav,
+            sharedPreferences.categoriesFav.split(",")
+        )
     }
 
     private fun setupAdapter() {
@@ -33,7 +41,7 @@ class NewsListFragment :
     override fun render(state: ViewState) {
         when (state) {
             is NewsViewState.onNewsResponse -> {
-                articlesAdapter?.submitList(state.data!!.toMutableList())
+                articlesAdapter?.submitList(state.data?.toMutableList())
             }
         }
     }
