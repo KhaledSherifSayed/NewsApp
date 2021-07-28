@@ -1,6 +1,8 @@
 package com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList
 
 
+import android.content.Intent
+import android.net.Uri
 import com.ibtikar.mvvm_starter_koin_coroutines.R
 import com.ibtikar.mvvm_starter_koin_coroutines.data.local.SharedPreferencesInterface
 import com.ibtikar.mvvm_starter_koin_coroutines.databinding.NewsListFragmentBinding
@@ -9,6 +11,7 @@ import com.ibtikar.mvvm_starter_koin_coroutines.ui.base.ViewState
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.getKoinInstance
 import kotlinx.android.synthetic.main.news_list_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 /**
  * Created by Meslmawy on 6/10/2021
@@ -32,7 +35,7 @@ class NewsListFragment :
 
     private fun setupAdapter() {
         articlesAdapter = ArticlesAdapter(NewsItemClick {
-
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(it.url)))
         })
         articlesRV.adapter = articlesAdapter
     }
