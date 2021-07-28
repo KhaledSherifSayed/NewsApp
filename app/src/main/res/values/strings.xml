@@ -18,6 +18,11 @@
     <string name="technology">Technology</string>
     <string name="select_country">Select Your Favorite Country To Follow</string>
     <string name="select_cateogry">Select Your Favorite Categories To Follow</string>
+    <string name="search">search</string>
+    <string name="search_check_msg">you should search at least in one category</string>
+    <string name="favorite_check_msg">Article added before</string>
+    <string name="favorite_success_msg">Article Added Successfully to your favorite</string>
+    <string name="favorite_list">Favorite List</string>
 
 
 </resources>

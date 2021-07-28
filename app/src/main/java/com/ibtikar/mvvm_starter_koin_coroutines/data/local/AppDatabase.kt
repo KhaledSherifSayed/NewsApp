@@ -19,6 +19,9 @@ interface FavoriteArticlesDao {
 
     @Insert
     suspend fun insert(article : ArticleEntity)
+
+    @Query("DELETE FROM ArticleEntity WHERE articleId = :id")
+    suspend fun deleteById(id: String) :  Int
 }
 
 @Database(entities = [ArticleEntity::class], version = 1, exportSchema = false)
