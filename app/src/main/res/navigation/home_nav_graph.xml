@@ -6,9 +6,34 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ibtikar.mvvm_starter_koin_coroutines.ui.articlesList.ArticlesListFragment"
+        android:name="com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList.NewsListFragment"
         android:label="Articles"
-        tools:layout="@layout/article_list_fragment" />
+        tools:layout="@layout/news_list_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteListFragment"
+            app:destination="@id/favoriteListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteListFragment"
+        android:name="com.ibtikar.mvvm_starter_koin_coroutines.ui.favorite.FavoriteListFragment"
+        android:label="FavoriteListFragment"
+        tools:layout="@layout/favorite_list_fragment"/>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.ibtikar.mvvm_starter_koin_coroutines.ui.settings.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/settings_fragment"/>
 
 
 </navigation>

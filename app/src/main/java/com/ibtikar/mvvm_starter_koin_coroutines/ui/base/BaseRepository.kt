@@ -39,7 +39,8 @@ abstract class BaseRepository(val contextProviders: ContextProviders) {
     private fun unexpectedError(error: Throwable): Exception {
         return ApplicationException(
             throwable = error,
-            type = ErrorType.Network.Unexpected
+            type = ErrorType.Network.Unexpected,
+            errorMessageRes = R.string.error_unexpected
         )
     }
 

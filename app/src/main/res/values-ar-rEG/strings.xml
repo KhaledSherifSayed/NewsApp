@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">أبلكيشن للأخبار</string>
+    <string name="label_english">English</string>
+    <string name="label_arabic">Arabic (العَرَبِيَّة)</string>
+    <string name="button_cancel">إلغاء</string>
+    <string name="changeLanguage">تغيير اللغة (En)</string>
+    <string name="error_no_internet_connection">عذرا ، لا يوجد اتصال بالإنترنت</string>
+    <string name="error_time_out_connection">آسف ، يجب أن تحاول مرة أخرى</string>
+    <string name="error_unexpected">خطأ غير متوقع</string>
+    <string name="next">التالي</string>
+    <string name="select_country">حدد الدولة المفضلة لديك لمتابعة</string>
+    <string name="select_category">حدد الفئات المفضلة لديك لمتابعة</string>
+    <string name="change_country">يمكنك تغيير بلدك المفضل</string>
+    <string name="change_cateogry">يمكنك تغيير الفئات المفضلة لديك</string>
+    <string name="search">بحث</string>
+    <string name="search_check_msg">يجب عليك البحث في فئة واحدة على الأقل</string>
+    <string name="favorite_check_msg">تمت إضافة المادة من قبل</string>
+    <string name="favorite_success_msg">تمت إضافة المقال بنجاح إلى مفضلتك</string>
+    <string name="favorite_list">قائمة المفضلة</string>
+    <string name="settings">إعدادات</string>
+    <string name="article_deleted_msg">تم حذف هذا الخبر من المفضلة</string>
+    <string name="nigh_mode">الوضع الليلي</string>
+    <string name="three_cats_check">ثلاث فئات مفضلة كحد أدنى</string>
+
+</resources>

@@ -51,6 +51,13 @@ class SharedPreferencesUtils constructor(
             putBoolean(INTRODUCTION, value)
         }
 
+    override var nightMode: Boolean
+        get() {
+            return getBoolean(NIGHT_MODE)
+        }
+        set(value) {
+            putBoolean(NIGHT_MODE, value)
+        }
 
     override fun putString(key: String, value: String?) {
         mPrefs.edit().putString(key, value).apply()
@@ -96,6 +103,7 @@ class SharedPreferencesUtils constructor(
         const val FAVORITE_COUNTRY = "FAVORITE_COUNTRY"
         const val FAVORITE_CATEGORIES = "FAVORITE_CATEGORIES"
         const val INTRODUCTION = "INTRODUCTION"
+        const val NIGHT_MODE = "NIGHT_MODE"
 
     }
 }

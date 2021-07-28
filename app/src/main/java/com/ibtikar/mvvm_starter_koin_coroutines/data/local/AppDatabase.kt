@@ -9,29 +9,35 @@ import kotlinx.coroutines.flow.Flow
  */
 
 @Dao
-interface ArticlesDao {
+interface FavoriteArticlesDao {
+
+    @Query("SELECT EXISTS (SELECT 1 FROM ArticleEntity WHERE articleId = :id)")
+    suspend fun exists(id: String): Boolean
 
     @Query("select * from ArticleEntity")
-    fun getActors(): Flow<List<ArticleEntity>>
+    fun getArticles(): Flow<List<ArticleEntity>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(vararg articles: ArticleEntity)
+    @Insert
+    suspend fun insert(article : ArticleEntity)
+
+    @Query("DELETE FROM ArticleEntity WHERE articleId = :id")
+    suspend fun deleteById(id: String) :  Int
 }
 
-@Database(entities = [ArticleEntity::class], version = 1, exportSchema = false)
-abstract class ArticlesDatabase : RoomDatabase() {
-    abstract val articlesDao: ArticlesDao
+@Database(entities = [ArticleEntity::class], version = 2, exportSchema = false)
+abstract class FavoriteArticlesDatabase : RoomDatabase() {
+    abstract val favoriteArticlesDao: FavoriteArticlesDao
 
     companion object {
         @Volatile
-        private var INSTANCE: ArticlesDatabase? = null
+        private var INSTANCE: FavoriteArticlesDatabase? = null
 
-        fun getAppDataBase(context: Context): ArticlesDatabase {
+        fun getAppDataBase(context: Context): FavoriteArticlesDatabase {
             return INSTANCE ?: synchronized(this) {
                 Room.databaseBuilder(
                     context,
-                    ArticlesDatabase::class.java,
-                    "articlesDB"
+                    FavoriteArticlesDatabase::class.java,
+                    "favoriteArticlesDB"
                 ).build()
             }.also {
                 INSTANCE = it
