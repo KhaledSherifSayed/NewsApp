@@ -22,6 +22,7 @@
     <string name="search_check_msg">you should search at least in one category</string>
     <string name="favorite_check_msg">Article added before</string>
     <string name="favorite_success_msg">Article Added Successfully to your favorite</string>
+    <string name="favorite_list">Favorite List</string>
 
 
 </resources>

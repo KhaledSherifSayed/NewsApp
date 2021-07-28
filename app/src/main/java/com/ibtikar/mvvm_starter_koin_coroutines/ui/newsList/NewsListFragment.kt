@@ -6,6 +6,7 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.google.android.material.chip.Chip
 import com.ibtikar.mvvm_starter_koin_coroutines.R
 import com.ibtikar.mvvm_starter_koin_coroutines.data.local.SharedPreferencesInterface
@@ -29,7 +30,7 @@ class NewsListFragment :
     BaseFragmentWithBusiness<NewsListFragmentBinding, NewsViewModel>(R.layout.news_list_fragment) {
 
     private var articlesAdapter: ArticlesAdapter? = null
-    val sharedPreferences by getKoinInstance<SharedPreferencesInterface>()
+    private val sharedPreferences by getKoinInstance<SharedPreferencesInterface>()
     private var searchCategoriesFavList: ArrayList<String> = ArrayList()
     private var newsList = mutableListOf<NewsModelResponse>()
     override val viewModel: NewsViewModel by viewModel()
@@ -62,6 +63,11 @@ class NewsListFragment :
             filter(it)
         }
 
+        favoriteIV.setOnClickListener {
+            view?.findNavController()
+                ?.navigate(NewsListFragmentDirections.actionHomeFragmentToFavoriteListFragment())
+        }
+
         searchCategoriesFavList.addAll(sharedPreferences.categoriesFav.split(","))
         initCategoriesChips()
     }
@@ -92,13 +98,13 @@ class NewsListFragment :
                     Toast.makeText(
                         context,
                         getString(R.string.favorite_success_msg),
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     ).show()
                 else
                     Toast.makeText(
                         context,
                         getString(R.string.favorite_check_msg),
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     ).show()
             }
         }
