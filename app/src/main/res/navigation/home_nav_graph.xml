@@ -6,9 +6,9 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ibtikar.mvvm_starter_koin_coroutines.ui.articlesList.ArticlesListFragment"
+        android:name="com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList.NewsListFragment"
         android:label="Articles"
-        tools:layout="@layout/article_list_fragment" />
+        tools:layout="@layout/news_list_fragment" />
 
 
 </navigation>

@@ -1,4 +1,4 @@
-package com.ibtikar.mvvm_starter_koin_coroutines.ui.articlesList
+package com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList
 
 
 import com.ibtikar.mvvm_starter_koin_coroutines.data.network.ApiService
@@ -10,7 +10,7 @@ import com.ibtikar.mvvm_starter_koin_coroutines.utils.coroutines.ContextProvider
  */
 
 
-class ArticlesRepository(
+class NewsRepository(
     contextProviders: ContextProviders,
     private val apiService: ApiService
 ) : BaseRepository(contextProviders) {

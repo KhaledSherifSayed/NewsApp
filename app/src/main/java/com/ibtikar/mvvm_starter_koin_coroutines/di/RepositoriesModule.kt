@@ -1,6 +1,6 @@
 package com.ibtikar.mvvm_starter_koin_coroutines.di
 
-import com.ibtikar.mvvm_starter_koin_coroutines.ui.articlesList.ArticlesRepository
+import com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList.NewsRepository
 import org.koin.dsl.module
 
 /**
@@ -9,6 +9,6 @@ import org.koin.dsl.module
 
 val repositoryModule = module {
         single {
-            ArticlesRepository(get(),get())
+            NewsRepository(get(),get())
         }
 }

@@ -6,12 +6,12 @@
     <data>
 
         <variable
-            name="article"
-            type="com.ibtikar.mvvm_starter_koin_coroutines.data.models.ArticleModelResponse" />
+            name="item"
+            type="com.ibtikar.mvvm_starter_koin_coroutines.data.models.NewsModelResponse" />
 
         <variable
-            name="articleClick"
-            type="com.ibtikar.mvvm_starter_koin_coroutines.ui.articlesList.ArticleClick" />
+            name="itemClick"
+            type="com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList.NewsItemClick" />
 
     </data>
 
@@ -33,7 +33,7 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackground"
-            android:onClick="@{() -> articleClick.onClick(article)}"
+            android:onClick="@{() -> itemClick.onClick(item)}"
             android:orientation="vertical"
             tools:ignore="UnusedAttribute">
 
@@ -45,7 +45,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:loadImage="@{article.imageUrl()}" />
+                app:loadImage="@{item.urlToImage}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_article_title"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:padding="8dp"
-                android:text="@{article.title}"
+                android:text="@{item.title}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_21sdp"
@@ -70,7 +70,7 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:paddingBottom="12dp"
-                android:text="@{article.byline}"
+                android:text="@{item.author}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 android:textColor="@color/white_87"
                 android:textSize="@dimen/_13sdp"
@@ -86,7 +86,7 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:paddingBottom="12dp"
-                android:text="@{article.section}"
+                android:text="@{item.source.name}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 android:textColor="@color/white_87"
                 android:textSize="@dimen/_12sdp"
@@ -101,7 +101,7 @@
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:paddingBottom="12dp"
-                android:text="@{article.publishedDate}"
+                android:text="@{item.publishedDate}"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
                 android:textColor="@color/white_87"
                 android:textSize="@dimen/_12sdp"

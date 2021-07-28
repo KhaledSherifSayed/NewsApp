@@ -1,18 +1,18 @@
-package com.ibtikar.mvvm_starter_koin_coroutines.ui.articlesList
+package com.ibtikar.mvvm_starter_koin_coroutines.ui.newsList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ibtikar.mvvm_starter_koin_coroutines.data.models.ArticleModelResponse
+import com.ibtikar.mvvm_starter_koin_coroutines.data.models.NewsModelResponse
 import com.ibtikar.mvvm_starter_koin_coroutines.databinding.ItemArticleBinding
 
 /**
  * Created by Meslmawy on 6/10/2021
  */
 
-class ArticlesAdapter(val callback: ArticleClick) : ListAdapter<ArticleModelResponse, ArticlesAdapter.ArticleViewHolder>(DiffCallback) {
+class ArticlesAdapter(val callback: NewsItemClick) : ListAdapter<NewsModelResponse, ArticlesAdapter.ArticleViewHolder>(DiffCallback) {
 
     /**
      * Callback for calculating the diff between two non-null items in a list.
@@ -20,13 +20,13 @@ class ArticlesAdapter(val callback: ArticleClick) : ListAdapter<ArticleModelResp
      * Used by ListAdapter to calculate the minumum number of changes between and old list and a new
      * list that's been passed to `submitList`.
      */
-    companion object DiffCallback : DiffUtil.ItemCallback<ArticleModelResponse>() {
-        override fun areItemsTheSame(oldItem: ArticleModelResponse, newItem: ArticleModelResponse): Boolean {
+    companion object DiffCallback : DiffUtil.ItemCallback<NewsModelResponse>() {
+        override fun areItemsTheSame(oldItem: NewsModelResponse, newItem: NewsModelResponse): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: ArticleModelResponse, newItem: ArticleModelResponse): Boolean {
-            return newItem.id == oldItem.id
+        override fun areContentsTheSame(oldItem: NewsModelResponse, newItem: NewsModelResponse): Boolean {
+            return newItem.author + newItem.title == oldItem.author + oldItem.title
         }
     }
 
@@ -36,9 +36,9 @@ class ArticlesAdapter(val callback: ArticleClick) : ListAdapter<ArticleModelResp
     class ArticleViewHolder(val viewDataBinding: ItemArticleBinding) :
         RecyclerView.ViewHolder(viewDataBinding.root) {
 
-        fun bind(listener: ArticleClick,article: ArticleModelResponse) {
-            viewDataBinding.articleClick = listener
-            viewDataBinding.article = article
+        fun bind(listener: NewsItemClick, news: NewsModelResponse) {
+            viewDataBinding.itemClick = listener
+            viewDataBinding.item = news
             viewDataBinding.executePendingBindings()
         }
 
@@ -79,10 +79,10 @@ class ArticlesAdapter(val callback: ArticleClick) : ListAdapter<ArticleModelResp
 /**
  * Click listener for Groups. By giving the block a name it helps a reader understand what it does.
  */
-class ArticleClick(val block: (ArticleModelResponse) -> Unit) {
+class NewsItemClick(val block: (NewsModelResponse) -> Unit) {
     /**
      * Called when a video is clicked
      * @param video the video that was clicked
      */
-    fun onClick(people: ArticleModelResponse) = block(people)
+    fun onClick(item: NewsModelResponse) = block(item)
 }
