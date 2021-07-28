@@ -2,37 +2,49 @@
   <img src="Preview/articles.jpg" width="100%" height="350"/>
 </p>
 
-# NewYork Times Popular Articless in Kotlin 👓
+# Popular Articless in Kotlin 👓
 [![GitHub license](https://img.shields.io/badge/License-Khaled-blue.svg)](LICENSE.txt)
 [![Android Weekly](https://img.shields.io/badge/Android%20Weekly-%23406-2CA3E6.svg?style=flat)](http://androidweekly.net/issues/issue-406)
 [![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-FF4081.svg)](https://ktlint.github.io/)
 ![Github Followers](https://img.shields.io/github/followers/KhaledSherifSayed?label=Follow&style=social)
-![GitHub forks](https://img.shields.io/github/forks/KhaledSherifSayed/NY-Times-Popular-Articles?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/KhaledSherifSayed/NY-Times-Popular-Articles?style=social)
+![GitHub forks](https://img.shields.io/github/forks/KhaledSherifSayed/NewsApp?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/KhaledSherifSayed//NewsApp?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/Meslmawy?label=Follow&style=social)
 
 
-**NY Times** is a sample  Android application 📱 showing most popular articles of the world 👓 built to demonstrate use of *Modern Android development* tools.
+**News App** is a sample  Android application 📱 showing most popular articles of the world 👓 built to demonstrate use of *Modern Android development* tools.
  Dedicated to all Android Developers with ❤️. 
 
 ***You can Install and test latest Popular Articles app from below 👇***
 
-[![Articles App](https://img.shields.io/badge/Popular👓-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/KhaledSherifSayed/NY-Times-Popular-Articles/blob/devleop/app/releases/latest/download/app-debug.apk)
+[![Articles App](https://img.shields.io/badge/Popular👓-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/KhaledSherifSayed/NewsApp/blob/devleop/app/releases/latest/download/app-debug.apk)
 
 ## Build || Run 
-- You must login [here](https://developer.nytimes.com) getting API-KEY and Update x's values in [Secret-File](https://github.com/KhaledSherifSayed/NY-Times-Popular-Articles/blob/master/secrets.properties) with your api key.
+- You must login [here](https://newsapi.org) getting API-KEY and Update x's values in [Secret-File](https://github.com/KhaledSherifSayed/NewsApp/blob/master/secrets.properties) with your api key.
 
 ## About
 It simply loads **Popular Articles** data from API.Peoples will be always loaded from Remote data (from API). 
 - Clean and Simple Material UI.
 - Clean and Simple Architecture(MVVVM).
 
+
+## Features 
+- user can select country and categories which would like to hear about them in Onboarding Screen. 
+- user see headlines from the selected choices,headlines ordred by latest to oldest.
+- user can open headline in browser.
+- user can search headlines with categories choice and can save his favorite articles.
+
 *Dummy API is used in this app. JSON response is statically hosted [here](https://developer.nytimes.com)*.
 
 ## ScreenShots
 <p align="center">
-<img src="/Preview/list.png" width="32%"/>
-<img src="/Preview/details.png" width="32%"/>
+<img src="/Preview/1 (1).png" width="32%"/>
+<img src="/Preview/1 (2).png" width="32%"/>
+<img src="/Preview/1 (3).png" width="32%"/>
+<img src="/Preview/1 (4).png" width="32%"/>
+<img src="/Preview/1 (5).png" width="32%"/>
+<img src="/Preview/1 (6).png" width="32%"/>
+<img src="/Preview/1 (7).png" width="32%"/>
 </p>
 
 
@@ -58,30 +70,6 @@ This app uses [***MVVM (Model View View-Model)***](https://developer.android.com
 - [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - For writing Gradle build scripts using Kotlin.
 - [Gradle Refresh Version](https://jmfayard.github.io/refreshVersions/setup) - Centralize your dependencies in a proper file format.
 - [Secrets Gradle Plugin for Android](https://github.com/google/secrets-gradle-plugin)  - A Gradle plugin for providing your secrets securely to your Android project.
-
-
-
-## Unit Testing Frameworks
-Unit Tests verify the interactions of viewmodels between repositories and REST api requests.
-- [Mock-Kotlin](https://github.com/mockk/mockk) - is generating pseudo-objects that simulate real objects behaviour for tests
-
-## UI Testing Frameworks
-UI Tests verify means testing the visual elements to verify that they are functioning according to requirements.
-- [Kaspresso](https://github.com/KasperskyLab/Kaspresso) - is a great framework for UI testing. Based on Espresso and UI Automator, Kaspresso provides a wide range of additional amazing features
-
-# How to generate code coverage report ?
-
-Open terminal and type the following command
-
-```./gradlew testDebugUnitTest```
-
-The coverage report will be generated on the following path.
-
-``` app/build/reports/test ```
-
-<p align="center">
-  <img src="Preview/unit_test_coverage.PNG" width="100%" height="350"/>
-</p>
 
 
 # How to generate lint reports ?
