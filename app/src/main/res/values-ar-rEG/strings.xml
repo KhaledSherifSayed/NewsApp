@@ -7,20 +7,9 @@
     <string name="changeLanguage">تغيير اللغة (En)</string>
     <string name="error_no_internet_connection">عذرا ، لا يوجد اتصال بالإنترنت</string>
     <string name="error_time_out_connection">آسف ، يجب أن تحاول مرة أخرى</string>
-    <string name="error_unexpected"> خطأ غير متوقع</string>
-    <string name="expandtext">قم بتوسيع النص</string>
-    <string name="share">يشارك</string>
     <string name="next">التالي</string>
-    <string name="start">حصلت عليه</string>
-    <string name="general">عام</string>
-    <string name="business">عمل</string>
-    <string name="entertainment">ترفيه</string>
-    <string name="health">صحة</string>
-    <string name="science">علوم</string>
-    <string name="sports">رياضات</string>
-    <string name="technology">تكنولوجيا</string>
     <string name="select_country">حدد الدولة المفضلة لديك لمتابعة</string>
-    <string name="select_cateogry">حدد الفئات المفضلة لديك لمتابعة</string>
+    <string name="select_category">حدد الفئات المفضلة لديك لمتابعة</string>
     <string name="change_country">يمكنك تغيير بلدك المفضل</string>
     <string name="change_cateogry">يمكنك تغيير الفئات المفضلة لديك</string>
     <string name="search">بحث</string>
@@ -31,4 +20,6 @@
     <string name="settings">إعدادات</string>
     <string name="article_deleted_msg">تم حذف هذا الخبر من المفضلة</string>
     <string name="nigh_mode">الوضع الليلي</string>
+    <string name="three_cats_check">ثلاث فئات مفضلة كحد أدنى</string>
+
 </resources>

@@ -23,7 +23,7 @@
 
         <activity
             android:name=".ui.onboarding.OnBoardingActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:windowSoftInputMode="adjustPan" />
     </application>
 

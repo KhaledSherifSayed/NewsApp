@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -113,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/switchCompat"
                 android:layout_centerHorizontal="true"
-                android:paddingRight="8dp"
+                android:paddingStart="8dp"
                 android:text="@string/nigh_mode"
                 app:layout_constraintTop_toBottomOf="@+id/changeLang"
                 app:layout_constraintStart_toStartOf="parent"
