@@ -17,7 +17,7 @@
 
 ***You can Install and test latest Popular Articles app from below 👇***
 
-[![Articles App](https://img.shields.io/badge/Popular👓-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/KhaledSherifSayed/NewsApp/blob/devleop/app/releases/latest/download/app-debug.apk)
+[![Articles App](https://img.shields.io/badge/Popular👓-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/KhaledSherifSayed/NewsApp/blob/main/app/releases/latest/download/app-debug.apk)
 
 ## Build || Run 
 - You must login [here](https://newsapi.org) getting API-KEY and Update x's values in [Secret-File](https://github.com/KhaledSherifSayed/NewsApp/blob/master/secrets.properties) with your api key.
