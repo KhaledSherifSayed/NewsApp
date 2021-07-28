@@ -30,4 +30,5 @@
     <string name="favorite_list">قائمة المفضلة</string>
     <string name="settings">إعدادات</string>
     <string name="article_deleted_msg">تم حذف هذا الخبر من المفضلة</string>
+    <string name="nigh_mode">الوضع الليلي</string>
 </resources>

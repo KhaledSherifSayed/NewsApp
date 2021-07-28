@@ -5,10 +5,10 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.chip.Chip
 import com.ibtikar.mvvm_starter_koin_coroutines.R
 import com.ibtikar.mvvm_starter_koin_coroutines.data.local.SharedPreferencesInterface
-import com.ibtikar.mvvm_starter_koin_coroutines.data.models.CategoryModel
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.MainActivity
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.Constants.categories
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.LanguageCodes
@@ -27,6 +27,11 @@ class OnBoardingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (sharedPreferences.nightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
         setContentView(R.layout.activity_on_boarding)
         initCategoriesChips()
         nextButton.setOnClickListener {

@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.res.Configuration
 import android.util.Log
 import androidx.annotation.CallSuper
+import com.ibtikar.mvvm_starter_koin_coroutines.data.local.SharedPreferencesInterface
 import com.ibtikar.mvvm_starter_koin_coroutines.di.*
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.LocaleHelper
+import com.ibtikar.mvvm_starter_koin_coroutines.utils.getKoinInstance
 import com.ihsanbal.logging.LoggingInterceptor
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

@@ -32,4 +32,5 @@
     <string name="label_arabic">Arabic (العَرَبِيَّة)</string>
     <string name="button_cancel">Cancel</string>
     <string name="three_cats_check">three favorite categories as minimum</string>
+    <string name="nigh_mode">Night Mode</string>
 </resources>

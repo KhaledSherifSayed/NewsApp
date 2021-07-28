@@ -1,6 +1,5 @@
 package com.ibtikar.mvvm_starter_koin_coroutines.ui.settings
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +16,7 @@ import com.ibtikar.mvvm_starter_koin_coroutines.utils.Constants
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.LanguageCodes
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.LocaleHelper
 import com.ibtikar.mvvm_starter_koin_coroutines.utils.getKoinInstance
-import kotlinx.android.synthetic.main.news_list_fragment.*
 import kotlinx.android.synthetic.main.settings_fragment.*
-import kotlinx.android.synthetic.main.settings_fragment.ccp
 import kotlinx.android.synthetic.main.toolbar_settings.view.*
 import java.util.*
 
@@ -45,7 +42,6 @@ class SettingsFragment :
         }
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         settings_toolbar.backImage.setOnClickListener { back() }
@@ -62,6 +58,7 @@ class SettingsFragment :
         searchCategoriesFavList.clear()
         searchCategoriesFavList.addAll(sharedPreferences.categoriesFav.split(","))
         initCategoriesChips()
+        setupNightModeSwitchButton()
     }
 
 
@@ -76,7 +73,7 @@ class SettingsFragment :
         val inflator = LayoutInflater.from(chipGroup.context)
         val children = Constants.categories.map {
             val chip = inflator.inflate(R.layout.region, chipGroup, false) as Chip
-            if(sharedPreferences.language == LanguageCodes.ARABIC)
+            if (sharedPreferences.language == LanguageCodes.ARABIC)
                 chip.text = it.titleAR
             else
                 chip.text = it.titleEN
@@ -105,6 +102,19 @@ class SettingsFragment :
                     searchCategoriesFavList.joinToString(separator = ",")
             }
             chipGroup.addView(chip)
+        }
+    }
+
+    private fun setupNightModeSwitchButton() {
+        switchCompat.isChecked = sharedPreferences.nightMode
+        switchCompat.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                sharedPreferences.nightMode = true
+                activity?.recreate()
+            } else {
+                sharedPreferences.nightMode = false
+                activity?.recreate()
+            }
         }
     }
 }

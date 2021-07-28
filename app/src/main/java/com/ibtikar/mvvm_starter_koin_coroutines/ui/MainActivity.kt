@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.ibtikar.mvvm_starter_koin_coroutines.R
 import com.ibtikar.mvvm_starter_koin_coroutines.data.local.SharedPreferencesInterface
 import com.ibtikar.mvvm_starter_koin_coroutines.ui.onboarding.OnBoardingActivity
@@ -17,6 +18,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (sharedPreferences.nightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
         if (!sharedPreferences.introduction) {
             openActivity(OnBoardingActivity::class.java, finish = true)
         } else {
